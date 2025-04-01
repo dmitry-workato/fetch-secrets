@@ -14,6 +14,12 @@ then
   exit 3
 fi
 
+if [ ! -f .git/config ]
+then
+  echo "Must be run from the root folder of the github repository clone."
+  exit 4
+fi
+
 # Must be run inside of a github repository
 github_repo=$(git config --get remote.origin.url)
 github_repo=${github_repo#https://*github.com/}
