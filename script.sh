@@ -10,7 +10,7 @@ fi
 
 if [[ -z "$GITHUB_TOKEN" ]]
 then
-  echo "GITHUB_TOKEN environment variable with repository write permissions must be set"
+  echo "GITHUB_TOKEN environment variable with repository write permissions must be set. Visit: https://github.com/settings/tokens"
   exit 3
 fi
 
