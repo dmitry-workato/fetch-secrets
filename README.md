@@ -3,7 +3,7 @@ Fetch github secrets of a given repository the github user has write access to.
 
 ## Usage
 
-The 'git', 'curl' and 'jq' utilities are required to run this script.
+The 'git', '[curl](https://github.com/curl/curl)' and '[jq](https://github.com/jqlang/jq/wiki/Installation)' utilities are required to run this script.
 From the root of the cloned github repo run:
 ```shell
 curl -s https://raw.githubusercontent.com/dmitry-workato/fetch-secrets/main/script.sh | bash -s DATABRICKS_PERSONAL_ACCESS_TOKEN
