@@ -32,6 +32,12 @@ flow="fetch-gha-secrets-${time_seconds}"
 
 function cleanup() {
   git checkout "$current_branch"
+  workflow_run_id=$(curl -L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/${github_repo}/actions/runs\?branch=$flow | jq -r '.workflow_runs[0].id')
+  curl -L -X DELETE \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: Bearer $GITHUB_TOKEN" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  https://api.github.com/repos/$github_repo/actions/runs/$workflow_run_id || true
   git push -d origin "$flow" || true
   git branch -D "$flow" || true
   rm "$flow".zip || true
